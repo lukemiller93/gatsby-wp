@@ -23,7 +23,7 @@ class PageTemplate extends Component {
 
           <p
             dangerouslySetInnerHTML={{
-              __html: currentPage.content || currentPage.acf.page_body,
+              __html: currentPage.content,
             }}
           />
         </div>
