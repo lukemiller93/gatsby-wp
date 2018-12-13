@@ -41,10 +41,14 @@ const MainMenu = () => (
           <ul>
             {menuItems.map(item => (
               <li key={item.object_slug}>
-                <Link to={item.url}>{item.title}</Link>
-                <a href={item.url} target="_BLANK">
-                  {item.title}
-                </a>
+                {item.object == 'page' && (
+                  <Link to={item.object_slug}>{item.title}</Link>
+                )}
+                {item.object == 'custom' && (
+                  <a href={item.url} target={item.target}>
+                    {item.title}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
