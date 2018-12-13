@@ -39,21 +39,17 @@ const MainMenu = () => (
         <header>
           <h1>{data.allWordpressWpApiMenusMenusItems.edges[0].node.name}</h1>
           <ul>
-            {menuItems.map(item => (
-              <li key={item.object_slug}>
-                {item.object === 'page' && (
-                  <Link to={item.object_slug}>{item.title}</Link>
-                )}
-                {item.object === 'post' && (
-                  <Link to={`posts/${item.object_slug}`}>{item.title}</Link>
-                )}
-                {item.object === 'custom' && (
-                  <a href={item.url} target={item.target}>
-                    {item.title}
-                  </a>
-                )}
-              </li>
-            ))}
+            {menuItems.map(item => {
+              if (item.object === 'page' || item.object === 'custom')
+                return (
+                  <li
+                    style={{ display: `inline-block`, marginRight: `10px` }}
+                    key={item.object_slug}
+                  >
+                    <Link to={item.object_slug || item.url}>{item.title}</Link>
+                  </li>
+                )
+            })}
           </ul>
         </header>
       )

@@ -8,13 +8,19 @@ class PageTemplate extends Component {
   render() {
     // const siteMetadata = this.props.data.site.siteMetadata
     const currentPage = this.props.data.wordpressPage
-    const image = this.props.data.wordpressPage.featured_media.localFile
+    const image = this.props.data.wordpressPage.featured_media
     console.log(image)
     return (
       <Layout>
         <div>
           <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
-          {image !== null && <Image fluid={image.childImageSharp.fluid} />}
+          {image !== null && (
+            <Image
+              style={{ marginBottom: '300px' }}
+              fluid={image.localFile.childImageSharp.fluid}
+            />
+          )}
+
           <p
             dangerouslySetInnerHTML={{
               __html: currentPage.content || currentPage.acf.page_body,
@@ -37,6 +43,18 @@ export const pageQuery = graphql`
       date(formatString: "MMMM DD, YYYY")
       acf {
         page_body
+        page_image {
+          id
+          localFile {
+            id
+            childImageSharp {
+              id
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+        }
       }
       featured_media {
         localFile {
