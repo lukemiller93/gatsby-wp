@@ -12,7 +12,7 @@ class PageTemplate extends Component {
     console.log(image)
     return (
       <Layout>
-        <div>
+        <main>
           <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
           {image !== null && (
             <Image
@@ -21,12 +21,12 @@ class PageTemplate extends Component {
             />
           )}
 
-          <p
+          <article
             dangerouslySetInnerHTML={{
               __html: currentPage.content || currentPage.acf.page_body,
             }}
           />
-        </div>
+        </main>
       </Layout>
     )
   }

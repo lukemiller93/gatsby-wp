@@ -22,7 +22,7 @@ class PostsTemplate extends Component {
             <small style={{ color: 'rebeccapurple', fontWeight: 'bold' }}>
               {node.date}
             </small>
-            <article
+            <div
               className="post-content"
               dangerouslySetInnerHTML={{ __html: node.excerpt }}
             />

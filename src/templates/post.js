@@ -11,7 +11,7 @@ class PostTemplate extends Component {
       <Layout>
         <div>
           <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-          <p dangerouslySetInnerHTML={{ __html: post.content }} />
+          <article dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
         <Link to="posts/">Back to Posts</Link>
       </Layout>
