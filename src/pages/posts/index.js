@@ -11,7 +11,7 @@ class PostsTemplate extends Component {
       <Layout>
         <h1>Posts Page</h1>
         {posts.edges.map(({ node }) => (
-          <article
+          <main
             key={node.slug}
             className="post"
             style={{ marginBottom: '50px' }}
@@ -22,11 +22,11 @@ class PostsTemplate extends Component {
             <small style={{ color: 'rebeccapurple', fontWeight: 'bold' }}>
               {node.date}
             </small>
-            <p
+            <article
               className="post-content"
               dangerouslySetInnerHTML={{ __html: node.excerpt }}
             />
-          </article>
+          </main>
         ))}
       </Layout>
     )
